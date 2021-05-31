@@ -1,5 +1,5 @@
 /**
- * @file lcio.hpp
+ * @file core.hpp
  * @author Chenwei Jia (cwjia98@gmail.com)
  * @brief
  * 此头文件包含激光雷达与摄像头的融合方法与可视化方法，以及相关数据结构的定义
@@ -66,18 +66,18 @@ class RealOrientationQuat {
 /**
  * @brief 2d像素点位置
  */
-typedef struct PixelPosition2d {
+typedef struct PixelPosition {
     int w;  // width
     int h;  // height
-} PixelPosition2d;
+} PixelPosition;
 
 /**
  * @brief 2d矩形框的像素尺寸，指名左上角与右下角位置
  */
-typedef struct PixelRect2d {
-    PixelPosition2d left_top;
-    PixelPosition2d right_btm;
-} PixelRect2d;
+typedef struct PixelRect {
+    PixelPosition left_top;
+    PixelPosition right_btm;
+} PixelRect;
 
 /**
  * @brief 真是坐标系下3d包围框的8个角点的结构体
@@ -145,5 +145,5 @@ class RealLidarBoundingBox3d {
 };
 
 typedef RealLidarBoundingBox3d RealLidarObject3d;
-typedef PixelRect2d PixelLidarObject2d;
-typedef PixelRect2d PixelCameraObject2d;
+typedef PixelRect PixelLidarObjectRect;
+typedef PixelRect PixelCameraObjectRect;
