@@ -6,6 +6,9 @@
 #include <string>
 
 // TODO:YOLO目标检测
+/**
+ * @brief 摄像头目标检测类
+ */
 class CameraObjectDetector {
    private:
     float thresh_;
@@ -25,7 +28,13 @@ class CameraObjectDetector {
     std::vector<std::pair<std::string, cv::Rect>> detect(cv::Mat *img);
 };
 
-// TODO:目标检测实现
+// TODO:
+/**
+ * @brief Construct a new Camera Object Detector:: Camera Object Detector object
+ * @param  cfg_file_addr    cfg文件地址
+ * @param  weight_file_addr weights文件地址
+ * @param  class_name_file_addr class_name文件地址
+ */
 CameraObjectDetector::CameraObjectDetector(char *cfg_file_addr,
                                            char *weight_file_addr,
                                            char *class_name_file_addr) {
@@ -42,8 +51,17 @@ CameraObjectDetector::CameraObjectDetector(char *cfg_file_addr,
     }
 }
 
+/**
+ * @brief Destroy the Camera Object Detector:: Camera Object Detector object
+ */
 CameraObjectDetector::~CameraObjectDetector() {}
 
+/**
+ * @brief
+ * 图像转换函数，将二维图像转换为一维数组，目标数组长度等于二位图像的高×宽×颜色通道数量
+ * @param  img              二维图像
+ * @param  dst              一维数组
+ */
 void CameraObjectDetector::image_convert(const cv::Mat *img, float *dst) {
     uchar *data = img->data;
     int h = img->rows;
@@ -59,6 +77,11 @@ void CameraObjectDetector::image_convert(const cv::Mat *img, float *dst) {
     }
 }
 
+/**
+ * @brief 图像目标检测
+ * @param  img              My Param doc
+ * @return std::vector<std::pair<std::string, cv::Rect>> 
+ */
 std::vector<std::pair<std::string, cv::Rect>> CameraObjectDetector::detect(
     cv::Mat *img) {
     cv::Mat rgb_img;
